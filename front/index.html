@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SPb-Alerts papapi papapa papipu</title>
+
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <link href="css/main_style.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div style="height: 24px;"></div>
+
+                    <div class="d-sm-flex align-items-center mb-4">
+                        <h1 class="h3 mb-0 text-gray-800 mr-2">Статистика за</h1>
+                        <input type="date" id="dayid">
+                    </div>
+
+                    <hr class="solid">
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                               Количество заявок</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="eventsCount"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-table fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Количество аномалий</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="anomalyCount"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-angry fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Процент количества заявок к количеству аномалий
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="procid"></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100" id="progress"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-percent fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Информация о заданной дате</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="dayinfo"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-info fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Тепловая карта аномалий</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area" style="height: 45rem;">
+                                        <div id="map" style="width: 100%; height: 45rem;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Соотношение категорий заявок</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="pie-chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>&copy; papapi papapa papipu 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=<your API-key>" type="text/javascript"></script>
+    <script src="leaflet-heat.js"></script>
+    <script src="yandex.js"></script>
+    <script src="papaparse.js"></script>
+    <style>
+        body { font: 16px/1.4 "Helvetica Neue", Arial, sans-serif; }
+        .ghbtns { position: relative; top: 4px; margin-left: 5px; }
+        a { color: #0077ff; }
+    </style>
+    <script>
+        var day = document.getElementById("dayid");
+        day.value = "2019-07-02";
+
+        var map =  L.map('map').setView([59.935851, 30.315357], 13);
+        var baseUrl = 'https://localhost:44331/weatherforecast';
+        var updatePeriod = 30;
+
+        function update(forse){
+            map.eachLayer((layer) => {
+                layer.remove();
+            });
+            var yandexMap = L.yandex().addTo(map);
+
+            var dateParts = day.value.split('-');
+
+            var url = `${baseUrl}/year/${dateParts[0]}/month/${dateParts[1]}/day/${dateParts[2]}`;
+
+            var networkPromise = fetch(url).then(data => data.json())
+                                           .then(positions => {
+                                                var markers = positions.filter(p => p['is_anomaly'] == true).map(function(p) {
+                                                    return [p['lat'], p['lon'], 0.2];
+                                                })
+
+                                                var heat = L.heatLayer(markers, {radius: 30, minOpacity: 0.5}).addTo(map);
+
+                                                // -- stats -- 
+                                                var eventsCount = document.getElementById("eventsCount");
+                                                eventsCount.innerHTML = positions.length;
+                                                
+                                                var anomalyCount = document.getElementById("anomalyCount");
+                                                anomalyCount.innerHTML = positions.filter(p => p['is_anomaly'] == true).length
+
+                                                var procid = document.getElementById("procid");
+                                                var proc = positions.filter(p => p['is_anomaly'] == true).length / positions.length * 100;
+                                                procid.innerHTML = proc.toString().substring(0, 5) + '%';
+                                                $('#progress').attr('aria-valuenow', proc).css('width', proc+'%');
+
+                                                var dayinfo = document.getElementById("dayinfo");
+                                                var isdayoffText = positions[0]['is_day_off'] ? "Нерабочий день" : "Рабочий день";
+                                                var dayinfoText = `Средняя температура воздуха: ${positions[0]['weather']} ℃<br>${isdayoffText}`;
+                                                dayinfo.innerHTML = dayinfoText;
+
+                                                Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+                                                Chart.defaults.global.defaultFontColor = '#858796';
+
+                                                var categories = positions.reduce(function (r, a){
+                                                    r[a['category']] = r[a['category']] || [];
+                                                    r[a['category']].push(a);
+                                                    return r;
+                                                }, Object.create(null));
+                                                
+                                                var labels = [];
+                                                var labelsData = [];
+                                                for (const [key, value] of Object.entries(categories)) {
+                                                    labels.push(key);
+                                                    labelsData.push(value.length);
+                                                }
+
+                                                var ctx = document.getElementById("pie-chart");
+                                                var myPieChart = new Chart(ctx, {
+                                                type: 'doughnut',
+                                                data: {
+                                                    labels: labels,
+                                                    datasets: [{
+                                                    data: labelsData,
+                                                    backgroundColor: ['#bbed41', '#9affff', '#6d98ea', '#10523f', '#84dd82', '#a6bf88', '#ea2e5a', '#25de5e', '#94a8a4', '#9620', '#c243f4'],
+                                                    hoverBackgroundColor: ['#BBED31', '#9AFFEF', '#6D98DA', '#10522F', '#84DD72', '#A6BF78', '#EA2E4A', '#25DE4E', '#94A894', '#9610', '#C243E4'],
+                                                    hoverBorderColor: "rgba(234, 236, 244, 1)",
+                                                    }],
+                                                },
+                                                options: {
+                                                    maintainAspectRatio: false,
+                                                    tooltips: {
+                                                    backgroundColor: "rgb(255,255,255)",
+                                                    bodyFontColor: "#858796",
+                                                    borderColor: '#dddfeb',
+                                                    borderWidth: 1,
+                                                    xPadding: 15,
+                                                    yPadding: 15,
+                                                    displayColors: false,
+                                                    caretPadding: 10,
+                                                    },
+                                                    legend: {
+                                                    display: true
+                                                    },
+                                                    cutoutPercentage: 80,
+                                                },
+                                                });
+                                                // -- stats end --
+
+                                                positions.filter(p => p['is_anomaly'] == true).forEach(p => {
+                                                    var popupText = `<b>Категория:</b> ${p['category']}`;
+                                                    L.marker([p['lat'], p['lon'], 0.2], {opacity: 0}).bindPopup(popupText, {keepInView: true}).addTo(map);
+                                                });
+                                           })
+
+            if (forse == false)
+            {
+                var timeOutPromise = new Promise(function(resolve, reject) {
+                    setTimeout(resolve, updatePeriod * 1000, 'Timeout Done');
+                });
+
+                Promise.all([networkPromise, timeOutPromise])
+                       .then(function(values) {
+                            console.log("Map updated (next update after ", updatePeriod, " secods)");
+
+                            update(false);
+                        });
+            }
+        }
+
+        update(false);
+
+        day.oninput = function() {
+            update(true);
+        }
+    </script>
+
+</body>
+</html>
